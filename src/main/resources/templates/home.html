@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home - MY Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { background: #007bff; color: white; padding: 10px; }
+        td { padding: 10px; text-align: center; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f9f9f9; }
+        .logout { margin-top: 20px; display: block; color: #dc3545; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>MY Website 20240140024</h2>
+    <p>Selamat datang di aplikasi! | Nama: Hafiz Kurniawan</p>
+    <a href="/form">+ Input Data Mahasiswa</a>
+
+    <h3>Data Mahasiswa</h3>
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NIM</th>
+            <th>Jenis Kelamin</th>
+        </tr>
+        <tr th:if="${#lists.isEmpty(userList)}">
+            <td colspan="4">Belum ada data</td>
+        </tr>
+        <tr th:each="user, i : ${userList}">
+            <td th:text="${i.count}"></td>
+            <td th:text="${user.nama}"></td>
+            <td th:text="${user.nim}"></td>
+            <td th:text="${user.jenisKelamin}"></td>
+        </tr>
+    </table>
+
+    <a class="logout" href="/logout">Logout</a>
+</div>
+</body>
+</html>
