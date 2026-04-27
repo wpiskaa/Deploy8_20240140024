@@ -1,18 +1,19 @@
 package com.tugas.demo6.controller;
 
 import com.tugas.demo6.model.User;
+import com.tugas.demo6.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class UserController {
 
-    // Data disimpan sementara di memori (tidak pakai database)
-    private List<User> userList = new ArrayList<>();
+    @Autowired
+    private UserRepository userRepository;
 
     // =====================
     // HALAMAN LOGIN
@@ -40,6 +41,7 @@ public class UserController {
     // =====================
     @GetMapping("/home")
     public String homePage(Model model) {
+        List<User> userList = userRepository.findAll();
         model.addAttribute("userList", userList);
         return "home"; // tampilkan home.html
     }
@@ -55,9 +57,10 @@ public class UserController {
 
     @PostMapping("/form")
     public String submitForm(@ModelAttribute User user) {
-        userList.add(user); // simpan ke list sementara
+        userRepository.save(user); // simpan ke database
         return "redirect:/home";
     }
+
 
     // =====================
     // LOGOUT
@@ -66,6 +69,23 @@ public class UserController {
     public String logout() {
         return "redirect:/login";
     }
+
+    // =====================
+    // HALAMAN GALLERY (LUCU)
+    // =====================
+    @GetMapping("/gallery")
+    public String galleryPage() {
+        return "gallery";
+    }
+
+    // =====================
+    // HALAMAN ABOUT
+    // =====================
+    @GetMapping("/about")
+    public String aboutPage() {
+        return "about";
+    }
+
 
     // Redirect dari "/" ke login
     @GetMapping("/")

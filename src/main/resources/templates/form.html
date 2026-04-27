@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Form Input - MY Website</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
-        .container { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { color: #333; }
-        label { display: block; margin-top: 15px; font-weight: bold; }
-        input[type=text] { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .radio-group { margin-top: 8px; }
-        button { margin-top: 20px; background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background: #0056b3; }
-        a { display: block; margin-top: 15px; color: #007bff; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posting Baru - Vibes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="container">
-    <h2>Form Input Mahasiswa</h2>
-
-    <form method="post" th:action="@{/form}" th:object="${user}">
-        <label>Nama:</label>
-        <input type="text" th:field="*{nama}" required />
-
-        <label>NIM:</label>
-        <input type="text" th:field="*{nim}" required />
-
-        <label>Jenis Kelamin:</label>
-        <div class="radio-group">
-            <input type="radio" th:field="*{jenisKelamin}" value="Laki-laki" /> Laki-laki<br/>
-            <input type="radio" th:field="*{jenisKelamin}" value="Perempuan" /> Perempuan
+    <nav class="top-nav">
+        <a href="/home" class="brand-logo">
+            <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">✨ Vibes</span>
+        </a>
+        <div class="nav-links">
+            <a href="/home" class="nav-item">Beranda</a>
+            <a href="/gallery" class="nav-item">Eksplor</a>
+            <a href="/form" class="nav-item active">Posting</a>
+            <a href="/about" class="nav-item">Profil</a>
+            <a href="/logout" class="nav-item logout">Keluar</a>
         </div>
+    </nav>
 
-        <button type="submit">Submit</button>
-    </form>
+    <div class="main-container">
+        <div class="form-card">
+            <h2 style="margin-bottom: 2rem; color: var(--text-main);">Buat Postingan Baru</h2>
+            
+            <form method="post" th:action="@{/form}" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="author" class="form-control" value="admin" required readonly style="background-color: var(--border-color); color: var(--text-muted); cursor: not-allowed;" />
+                </div>
 
-    <a href="/home">Kembali ke Home</a>
-</div>
+                <div class="form-group">
+                    <label class="form-label">Pilih Foto (Maksimal 10MB)</label>
+                    <div style="border: 2px dashed var(--border-color); padding: 3rem 2rem; text-align: center; border-radius: var(--radius-md); background: rgba(0,0,0,0.2);">
+                        <input type="file" name="file" accept="image/*" required style="width: 100%; color: var(--text-main);" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tulis Status</label>
+                    <textarea name="content" class="form-control" placeholder="Apa yang sedang kamu pikirkan?" required></textarea>
+                </div>
+
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <a href="/home" class="btn btn-outline" style="flex: 1;">Batal</a>
+                    <button type="submit" class="btn btn-primary" style="flex: 2;">Bagikan</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

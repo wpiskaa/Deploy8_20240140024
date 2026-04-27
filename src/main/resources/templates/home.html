@@ -1,46 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home - MY Website</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h2 { color: #333; }
-        a { color: #007bff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th { background: #007bff; color: white; padding: 10px; }
-        td { padding: 10px; text-align: center; border-bottom: 1px solid #eee; }
-        tr:hover { background: #f9f9f9; }
-        .logout { margin-top: 20px; display: block; color: #dc3545; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Vibes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<div class="container">
-    <h2>MY Website 20240140024</h2>
-    <p>Selamat datang di aplikasi! | Nama: Hafiz Kurniawan</p>
-    <a href="/form">+ Input Data Mahasiswa</a>
+    <nav class="top-nav">
+        <a href="/home" class="brand-logo">
+            <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">✨ Vibes</span>
+        </a>
+        <div class="nav-links">
+            <a href="/home" class="nav-item active">Beranda</a>
+            <a href="/gallery" class="nav-item">Eksplor</a>
+            <a href="/form" class="nav-item">Posting</a>
+            <a href="/about" class="nav-item">Profil</a>
+            <a href="/logout" class="nav-item logout">Keluar</a>
+        </div>
+    </nav>
 
-    <h3>Data Mahasiswa</h3>
-    <table>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>NIM</th>
-            <th>Jenis Kelamin</th>
-        </tr>
-        <tr th:if="${#lists.isEmpty(userList)}">
-            <td colspan="4">Belum ada data</td>
-        </tr>
-        <tr th:each="user, i : ${userList}">
-            <td th:text="${i.count}"></td>
-            <td th:text="${user.nama}"></td>
-            <td th:text="${user.nim}"></td>
-            <td th:text="${user.jenisKelamin}"></td>
-        </tr>
-    </table>
+    <div class="main-container">
+        <div th:if="${#lists.isEmpty(posts)}" style="text-align: center; padding: 5rem 1rem; color: var(--text-muted);">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📷</div>
+            <h2>Belum ada postingan di lini masa.</h2>
+            <p style="margin-top: 0.5rem;">Jadilah yang pertama untuk membagikan sesuatu!</p>
+        </div>
 
-    <a class="logout" href="/logout">Logout</a>
-</div>
+        <div class="feed-grid">
+            <div class="post-card" th:each="post : ${posts}">
+                <div class="post-header">
+                    <img src="/images/me.jpeg" alt="Avatar" class="avatar">
+                    <div>
+                        <div class="post-author" th:text="${post.author}">User</div>
+                        <div class="post-time" th:text="${post.formattedTime}">Baru saja</div>
+                    </div>
+                </div>
+                
+                <img th:if="${post.photoBase64 != null}" 
+                     th:src="${'data:' + post.contentType + ';base64,' + post.photoBase64}" 
+                     alt="Post image" class="post-image">
+                     
+                <div class="post-body">
+                    <div class="post-content">
+                        <strong th:text="${post.author}" style="color: var(--primary); margin-right: 5px;">User</strong>
+                        <span th:text="${post.content}">Status keren di sini.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

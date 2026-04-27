@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eksplor - Vibes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="/home" class="brand-logo">
+            <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">✨ Vibes</span>
+        </a>
+        <div class="nav-links">
+            <a href="/home" class="nav-item">Beranda</a>
+            <a href="/gallery" class="nav-item active">Eksplor</a>
+            <a href="/form" class="nav-item">Posting</a>
+            <a href="/about" class="nav-item">Profil</a>
+            <a href="/logout" class="nav-item logout">Keluar</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <h2 style="margin-bottom: 2rem; color: var(--text-main);">Eksplorasi</h2>
+        
+        <div class="explore-grid-desktop">
+            <div th:each="post : ${posts}" th:if="${post.photoBase64 != null}" class="explore-item">
+                <img th:src="${'data:' + post.contentType + ';base64,' + post.photoBase64}" class="explore-image" alt="Eksplor photo">
+            </div>
+
+            <!-- Fallback dummy images if empty -->
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+            <div th:if="${#lists.isEmpty(posts)}" class="explore-item"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" class="explore-image"></div>
+        </div>
+    </div>
+</body>
+</html>
