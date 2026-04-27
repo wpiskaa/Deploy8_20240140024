@@ -5,11 +5,11 @@ Vibes adalah aplikasi media sosial minimalis berbasis web yang dibangun mengguna
 ---
 
 ## 🚀 Fitur Utama
-1. **Autentikasi Sederhana**: Sistem login dengan username dan password yang sudah ditentukan (hardcoded).
-2. **Beranda (Feed Lini Masa)**: Menampilkan daftar postingan secara berurutan, lengkap dengan informasi pembuat, waktu tayang, konten teks, dan foto (dengan dukungan gambar hingga 10MB melalui konversi Base64).
-3. **Eksplor (Galeri)**: Menampilkan koleksi foto-foto unggahan pengguna dalam bentuk *Grid* yang responsif.
-4. **Buat Postingan**: Antarmuka untuk mengunggah foto dan menulis status yang akan dipublikasikan ke Lini Masa.
-5. **Profil Pengguna**: Menampilkan informasi detail pengguna, metrik pengikut, serta rekam jejak foto yang telah diunggah.
+1. **Autentikasi Sederhana**: Sistem login aman dengan verifikasi username dan password.
+2. **Dashboard Data Mahasiswa**: Menampilkan daftar mahasiswa yang terintegrasi secara dinamis (Portal Mahasiswa).
+3. **Manajemen Data**: Fitur untuk menambah data mahasiswa baru melalui formulir input yang responsif.
+4. **Halaman Tentang Saya**: Informasi profil pengembang aplikasi beserta teknologi yang digunakan.
+5. **Responsif & Modern**: Antarmuka dengan tema **Dark Moon** yang elegan dan nyaman di mata.
 
 ---
 
@@ -23,37 +23,37 @@ Vibes adalah aplikasi media sosial minimalis berbasis web yang dibangun mengguna
 
 ## 📸 Dokumentasi Antarmuka (Screenshots)
 
-> **Catatan untuk Pengguna:** Silakan masukkan (Replace) file screenshot yang sesuai ke dalam folder `screenshot` atau ganti URL gambar di bawah ini dengan nama file screenshot milik Anda.
+Berikut adalah tampilan antarmuka dari aplikasi **TechPortal** yang telah dijalankan:
 
 ### 1. Halaman Login
-![Halaman Login](screenshoots/login.png)
-*Antarmuka login dengan tema Dark Moon.*
+![Halaman Login](screenshots/login.png)
+*Antarmuka login sistem dengan desain minimalis.*
 
-### 2. Halaman Beranda (Feed)
-![Halaman Beranda](screenshoots/home.png)
-*Menampilkan lini masa (feed) tempat pengguna melihat status dan foto terbaru.*
+### 2. Halaman Beranda (Portal Mahasiswa)
+![Halaman Beranda](screenshots/home.png)
+*Menampilkan tabel data mahasiswa yang telah tersimpan di sistem.*
 
-### 3. Halaman Buat Postingan
-![Halaman Posting](screenshoots/post.png)
-*Formulir untuk membagikan momen (mendukung unggahan gambar lokal hingga 10MB).*
+### 3. Halaman Input Data
+![Halaman Input](screenshots/form.png)
+*Formulir untuk menambahkan data mahasiswa baru ke dalam database.*
 
-### 4. Halaman Eksplor & Profil
-![Halaman Eksplor](screenshoots/explore.png)
-*Galeri foto grid.*
+### 4. Halaman Tentang Saya (Profil)
+![Halaman Profil](screenshots/about.png)
+*Informasi profil pengembang aplikasi (Hafiz Kurniawan).*
 
 ---
 
 ## 👥 Dokumentasi Antarmuka Teman (Screenshots)
 
-Berikut adalah bukti dokumentasi aplikasi yang dijalankan oleh rekan/teman saya:
+Berikut adalah bukti dokumentasi aplikasi yang dijalankan oleh rekan saya (**Jundi**):
 
-### 1. Bukti Aplikasi Berhasil Dijalankan
-![Screenshot Teman 1](screenshoots/teman1.png)
-*Aplikasi berhasil ditarik (pull) dan dijalankan di perangkat teman.*
+### 1. Halaman Login Teman
+![Screenshot Teman 1](screenshots/teman_login.png)
+*Antarmuka login milik Jundi dengan kustomisasi personal.*
 
-### 2. Bukti Interaksi/Fitur oleh Teman
-![Screenshot Teman 2](screenshoots/teman2.png)
-*Teman berhasil berinteraksi dengan fitur di dalam aplikasi.*
+### 2. Dashboard Teman (Website Deploy — Jundi)
+![Screenshot Teman 2](screenshots/teman_home.png)
+*Aplikasi berhasil berjalan dan diakses di perangkat rekan saya.*
 
 ---
 
@@ -62,8 +62,8 @@ Berikut adalah bukti dokumentasi aplikasi yang dijalankan oleh rekan/teman saya:
 Aplikasi ini telah di-*containerization* menggunakan Docker agar dapat diakses dan dijalankan dengan mudah pada lingkungan apapun.
 
 ### 1. Docker Images
-Berikut adalah *screenshot* dari image `demo6-app` yang telah di-build di lokal dan siap di-push ke Docker Hub:
-![Docker Images](screenshoots/docker_images.png)
+Berikut adalah *screenshot* daftar image di Docker Desktop:
+![Docker Images](screenshots/docker_images.png)
 
 *(Atau via CLI)*
 ```bash
@@ -74,8 +74,8 @@ pijunbae/demo6-app     latest    ...            ...              ...
 ```
 
 ### 2. Docker Containers
-Berikut adalah *screenshot* container `demo6-container` yang sedang berjalan mem-binding port 8080:
-![Docker Containers](screenshoots/docker_containers.png)
+Berikut adalah *screenshot* container yang sedang berjalan mem-binding port:
+![Docker Containers](screenshots/docker_containers.png)
 
 *(Atau via CLI)*
 ```bash
