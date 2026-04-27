@@ -43,6 +43,20 @@ Vibes adalah aplikasi media sosial minimalis berbasis web yang dibangun mengguna
 
 ---
 
+## 👥 Dokumentasi Antarmuka Teman (Screenshots)
+
+Berikut adalah bukti dokumentasi aplikasi yang dijalankan oleh rekan/teman saya:
+
+### 1. Bukti Aplikasi Berhasil Dijalankan
+![Screenshot Teman 1](screenshoots/teman1.png)
+*Aplikasi berhasil ditarik (pull) dan dijalankan di perangkat teman.*
+
+### 2. Bukti Interaksi/Fitur oleh Teman
+![Screenshot Teman 2](screenshoots/teman2.png)
+*Teman berhasil berinteraksi dengan fitur di dalam aplikasi.*
+
+---
+
 ## 🐳 Dokumentasi Docker
 
 Aplikasi ini telah di-*containerization* menggunakan Docker agar dapat diakses dan dijalankan dengan mudah pada lingkungan apapun.
